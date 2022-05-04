@@ -16,6 +16,23 @@
     flex-direction: column;
 }
 
+.keys {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: center;
+}
+
+.large-btn {
+    display: flex;
+    align-items: center;
+}
+
+.digit-row {
+    display: flex;
+    align-items: center;
+}
+
 .clear, .delete {
     width: 130px;
     height: 60px;
@@ -23,6 +40,10 @@
     border-radius: 5px;
     margin: 5px;
 
+}
+
+.clear {
+    background-color: rgb(255, 174, 174);
 }
 
 .digit, .operator, .equate {
