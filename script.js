@@ -19,5 +19,5 @@ const divide = (...nums) => {
 };
 
 const operate = (operator, ...nums) => {
-    
+    return operator(...nums);
 };
