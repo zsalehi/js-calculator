@@ -1,3 +1,43 @@
+.calculator {
+    width: 500px;
+    margin: 0 auto;
+
+}
+
 .calculator-body {
-    width: 150px;
+    background-color: #c7c7c7;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.clear, .delete {
+    width: 130px;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+
+.digit, .operator, .equate {
+    width: 60px;
+    height: 50px;
+    border-radius: 5%;
+    border: none;
+    background-color: rgb(243, 243, 243);
+    margin: 5px;
+}
+
+input {
+    height: 100px;
+    width: 270px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
 }
