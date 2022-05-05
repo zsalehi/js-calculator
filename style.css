@@ -52,7 +52,7 @@
     background-color: rgb(255, 174, 174);
 }
 
-.digit, .operator, .equate {
+.digit, .operator, .equate, .percent {
     width: 60px;
     height: 50px;
     border-radius: 5%;
