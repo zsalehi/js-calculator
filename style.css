@@ -29,6 +29,10 @@
     justify-content: center;
 }
 
+.key:hover {
+    background-color: beige;
+}
+
 .large-btn {
     display: flex;
     align-items: center;
@@ -76,3 +80,4 @@
 .input {
     font-size: 40px;
 }
+

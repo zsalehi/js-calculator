@@ -1,15 +1,38 @@
-const digits = document.querySelectorAll('.digit');
-let valueOne = 0;
-digits.forEach( digit => {
-    digit.addEventListener('click', valueOne = digit.innerHTML)
-});
+const numberButtons = document.querySelectorAll('[data-number]');
+const operatorButtons = document.querySelectorAll('[data-operator]');
+const inputDisplay = document.querySelector('.input');
+const outputDisplay = document.querySelector('.output');
 
-console.log(valueOne);
+let firstOperand = '';
+let secondOperand = '';
+let currentOpertion = null;
+let resetScreen = false;
+
+numberButtons.forEach((button) => 
+    button.addEventListener('click', () => appendNumber(button.textContent))
+)
+
+function appendNumber(number) {
+    inputDisplay.textContent += number
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const add = (...nums) => {
     let result = nums.reduce((num1, num2) => num1 + num2);
     return result;
-};
+}
 
 const subtract = (...nums) => {
     let result = nums.reduce((num1, num2) => num1 - num2);
