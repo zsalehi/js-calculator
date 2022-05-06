@@ -18,6 +18,7 @@ clearButton.addEventListener('click', () => clear())
 deleteButton.addEventListener('click', () => deleteNumber())
 decimalButton.addEventListener('click', () => appendDecimal())
 equalButton.addEventListener('click', () => evaluate())
+//window.addEventListener('keydown', );
 
 function appendNumber(e) {
     // if inputDisplay is 0 or resetScreen is true
