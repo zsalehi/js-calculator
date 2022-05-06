@@ -12,16 +12,12 @@ let secondOperand = '';
 let currentOpertion = null;
 let resetScreen = false;
 
-numberButtons.forEach((button) => 
-    button.addEventListener('click', () => appendNumber(button.textContent))
-)
-
-operatorButtons.forEach((button) => 
-    button.addEventListener('click', () => setCurrentOperation(button.textContent))
-)
-
+numberButtons.forEach((button) => button.addEventListener('click', () => appendNumber(button.textContent)))
+operatorButtons.forEach((button) => button.addEventListener('click', () => setCurrentOperation(button.textContent)))
 clearButton.addEventListener('click', () => clear())
+deleteButton.addEventListener('click', () => deleteNumber())
 decimalButton.addEventListener('click', () => appendDecimal())
+equalButton.addEventListener('click', () => evaluate())
 
 function appendNumber(e) {
     // if inputDisplay is 0 or resetScreen is true
@@ -44,6 +40,11 @@ function clear() {
     currentOpertion = null;
 }
 
+
+function deleteNumber (){
+    inputDisplay.textContent = inputDisplay.textContent.toString().slice(0,-1);
+}
+
 function appendDecimal() {
     if (resetScreen) shouldResetScreen();
     if (inputDisplay.textContent === '')
@@ -53,36 +54,50 @@ function appendDecimal() {
 }
 
 function setCurrentOperation(e) {
+    if (currentOpertion !== null) evaluate();
     currentOpertion = e;
     firstOperand = parseFloat(inputDisplay.textContent);
-    inputDisplay.textContent = '0';
     outputDisplay.textContent = `${firstOperand} ${currentOpertion} `;     
     console.log(e);
+    resetScreen = true;
+}
 
+function evaluate() {
+    if (currentOpertion === null || resetScreen) return;
+    if (currentOpertion === '÷' && inputDisplay.textContent === '0') {
+        alert('You cannon divide by zero.');
+        return
+    }
+    secondOperand = parseFloat(inputDisplay.textContent);
+    inputDisplay.textContent = roundResult(operate(currentOpertion, firstOperand, secondOperand));
+    outputDisplay.textContent = `${firstOperand} ${currentOpertion} ${secondOperand}`
+    currentOpertion = null;
+}
+
+function roundResult(num) {
+    return Math.round(num * 1000) / 1000;
 }
 
 
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) =>  a / b;
 
-const add = (...nums) => {
-    let result = nums.reduce((num1, num2) => num1 + num2);
-    return result;
-}
+const operate = (operator, a, b) => {
+    a = parseFloat(a);
+    b = parseFloat(b);
 
-const subtract = (...nums) => {
-    let result = nums.reduce((num1, num2) => num1 - num2);
-    return result;
-};
-
-const multiply = (...nums) => {
-    let result = nums.reduce((num1, num2) => num1 * num2);
-    return result;
-};
-
-const divide = (...nums) => {
-    let result = nums.reduce((num1, num2) => num1 / num2);
-    return result;
-};
-
-const operate = (operator, ...nums) => {
-    return operator(...nums);
+    switch (operator) {
+        case '+':
+            return add(a, b);
+        case '-':
+            return subtract(a, b);
+        case '×':
+            return multiply(a, b);
+        case '÷':
+            (b === 0) ? null : divide(a, b);
+        default:
+            return null;
+    }
 };
